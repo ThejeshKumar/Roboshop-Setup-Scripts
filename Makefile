@@ -2,5 +2,8 @@ frontend:
 	@bash Components/Frontend.sh
 
 Mongodb:
-	@bash Components/Mongodb.bash
+	@bash Components/Mongodb.sh
+
+Catalogue:
+	@bash Components/Catalogue.sh
 
