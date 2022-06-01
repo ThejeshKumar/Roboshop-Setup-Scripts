@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [-z "$1" ] ; then
+if [ "$1" ] ; then
   echo "Instance Name as Argument is Needed"
   exit 1
 fi
