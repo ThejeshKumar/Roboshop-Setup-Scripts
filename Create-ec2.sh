@@ -5,6 +5,12 @@ if [ -z "$1" ] ; then
   exit 1
 fi
 
+# shellcheck disable=SC1073
+if [ "$1" == "list" ]; then
+  aws ec2 describe-instances --query "Reservations[*].Instances[*].{PrivateIp:PrivateIpAddress:PublicIp:PublicIpAddress, Name:Tags[?Key==`Name`]|[0].Value, Status:state.name}" --output table
+  exit 0
+fi
+
 NAME=$1
 
 aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId &>/dev/null
